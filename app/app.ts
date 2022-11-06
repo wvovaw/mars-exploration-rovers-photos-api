@@ -1,6 +1,6 @@
 import { Application } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import spiritRouter from "./routes/get.spirit.ts";
-import opportunityRouter from "./routes/get.opportunity.ts";
+import getPhotos from "./routes/get.roverPhotos.ts";
+import getMetadata from "./routes/get.roverMetadata.ts";
 import helpers from "./lib/helpers.ts";
 
 const app: Application = new Application();
@@ -26,10 +26,10 @@ app.addEventListener("error", (error) => {
 });
 
 // Routes
-app.use(spiritRouter.routes());
-app.use(spiritRouter.allowedMethods());
-app.use(opportunityRouter.routes());
-app.use(opportunityRouter.allowedMethods());
+app.use(getPhotos.routes());
+app.use(getPhotos.allowedMethods());
+app.use(getMetadata.routes());
+app.use(getMetadata.allowedMethods());
 
 // Load large files once and make them available throughout the app
 app.state.spirit = helpers.readJson("./static/Spirit.json");

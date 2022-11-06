@@ -22,6 +22,7 @@ export default {
       return e.message;
     }
   },
+
   readJson: (path: string) => {
     try {
       return JSON.parse(Deno.readTextFileSync(path));
@@ -29,6 +30,10 @@ export default {
       return e.message;
     }
   },
+
   range: (start: number, end: number) =>
     [...Array(1 + end - start).keys()].map((item) => item + start),
+
+  paginate: (arr: any[], per_page: number, page: number): any[] =>
+    arr.slice((page - 1) * per_page, page * per_page),
 };

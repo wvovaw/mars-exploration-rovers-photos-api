@@ -1,16 +1,12 @@
 export default {
-  spirit: (): Record<string, any> => {
-    return {
-      total_sols: 2118, // rg -c -e "\"\d+\"" ./static/Spirit.json
-      last_sol: 2208,
-      total_photos: 128516, // rg -c "https://" ./static/Spirit.json
-    };
+  spirit: {
+    total_sols: 2118, // rg -c -e "\"\d+\"" ./static/Spirit.json
+    last_sol: 2208,
+    total_photos: 128516, // rg -c "https://" ./static/Spirit.json
   },
-  opportunity: (): Record<string, any> => {
-    return {
-      total_sols: 4811, // rg -c -e "\"\d+\"" ./static/Opportunity.json
-      last_sol: 5111,
-      total_photos: 228298, // rg -c "https://" ./static/Opportunity.json
-    };
+  opportunity: {
+    total_sols: 4811, // rg -c -e "\"\d+\"" ./static/Opportunity.json
+    last_sol: 5111,
+    total_photos: 228298, // rg -c "https://" ./static/Opportunity.json
   },
 };
