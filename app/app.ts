@@ -33,6 +33,6 @@ app.use(getMetadata.allowedMethods());
 
 // Load large files once and make them available throughout the app
 app.state.spirit = helpers.readJson("./static/Spirit.json");
-app.state.opportunity = helpers.readJson("./static/Spirit.json");
+app.state.opportunity = helpers.readJson("./static/Opportunity.json");
 
 export default app;

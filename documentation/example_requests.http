@@ -1,11 +1,55 @@
-GET http://localhost:3000/spirit HTTP/1.1
+### Both rovers are identical so they has the same endpoint
+#   so this example will use a vatiable
+# ⚠ WARNING: without page limit the server will return all relevant data! Be carefull
+@rover = spirit
 
-###
+### Get rover metadata
+GET http://localhost:3000/metadata
+  ?rover={{rover}} HTTP/1.1
 
-GET http://localhost:3000/opportunity HTTP/1.1
+### Get all rover photos
+# page_limit may be undefined, then all relevant data will be returned.
+# if page undefined it is 1 by default
+# Be carefull !!! 
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &page_limit=25 HTTP/1.1
 
-###
+### Get all rover photos taken on cameras FHAZ,RHAZ,MICRO
+# cameras may be undefined then all the cameras will be used in result
+# to navigate use page parameter
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &cameras=[FHAZ,RHAZ,MICRO]
+  &page_limit=25
+  &page=13 HTTP/1.1
 
-GET http://localhost:3000/opportunity?sol=13 HTTP/1.1
+### Get all rover photos taken on sol 123
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &sol=[1]
+  &page_limit=25 HTTP/1.1
 
-###
+### Get all rover photos taken from sol 0 to sol 32
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &sol=[:32]
+  &page_limit=25 HTTP/1.1
+
+### Get all rover photos taken from sol 2205 to the last sol
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &sol=[2205:]
+  &page_limit=25 HTTP/1.1
+
+### Get all rover photos taken from sol 40 to sol 60
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &sol=[40:60]
+  &page_limit=25 HTTP/1.1
+
+### Get all rover photos taken in sols 1, 2, 3, 5, 8
+GET http://localhost:3000/photos
+  ?rover={{rover}}
+  &sol=[8,5,1,2,3]
+  &page_limit=25 HTTP/1.1

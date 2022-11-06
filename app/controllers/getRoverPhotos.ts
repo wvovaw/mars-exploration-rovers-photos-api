@@ -16,6 +16,7 @@ export default function getRoverPhotos(ctx: any) {
 
   if (params.cameras != undefined)
     cameras = helpers.camerasQueryDecode(params.cameras);
+  else cameras = ["FHAZ", "RHAZ", "NAVCAM", "PANCAM", "MICRO"];
 
   type Field = { sol: number; camera: string; url: string };
 
