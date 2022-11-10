@@ -16,16 +16,15 @@ export default {
   writeJson: (path: string, data: Record<string, unknown>): string => {
     try {
       Deno.writeTextFileSync(path, JSON.stringify(data));
-
       return "Written to " + path;
     } catch (e) {
       return e.message;
     }
   },
 
-  readJson: (path: string) => {
+  readJson: async (path: string) => {
     try {
-      return JSON.parse(Deno.readTextFileSync(path));
+      return await JSON.parse(await Deno.readTextFile(path));
     } catch (e) {
       return e.message;
     }
